@@ -4,6 +4,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 const cron = require('node-cron');
 const chat_id = '-545281554';
 const chat_id_Corp = '-1001426777808';
+const chat_id2 = '-1001962154115';
 const convert = require('xml-js');
 const fs = require('fs');
 const trafficWeatherChat = require( './Componets/trafficWeatherChat.js');
@@ -27,6 +28,13 @@ const schet = cron.schedule('*/60 09-18 * * 1-5', () => {
   bot.telegram.sendMessage(chat_id_Corp, 'Проверьте наличие адреса и телефона в выставленных счетах', Markup.inlineKeyboard([[Markup.button.callback("👍 0", "likes:0")]]) );
 });
 schet.start();
+
+
+
+const test = cron.schedule('*/30 19-21 * * 1-7', () => {
+  bot.telegram.sendMessage(chat_id2, 'Проверьте наличие адреса и телефона в выставленных счетах', Markup.inlineKeyboard([[Markup.button.callback("👍 0", "likes:0")]]) );
+});
+test.start();
 
 //Привет команды
 bot.hears('Привет', async ctx => {
